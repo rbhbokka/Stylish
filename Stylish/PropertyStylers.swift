@@ -53,6 +53,10 @@ public extension Style {
     typealias masksToBounds = Stylish.PropertyStylers.UIView.MasksToBounds
     /// Sets property value on UIViews and subclasses
     typealias tintColor = Stylish.PropertyStylers.UIView.TintColor
+    /// Sets property value on UITabBar and subclasses
+    typealias barTintColor = Stylish.PropertyStylers.UITabBar.BarTintColor
+    /// Sets property value on UISwitch and subclasses
+    typealias onTintColor = Stylish.PropertyStylers.UIView.OnTintColor
     /// Sets property value on UIViews and subclasses
     typealias layoutMargins = Stylish.PropertyStylers.UIView.LayoutMargins
     /// Sets property value on UIViews and subclasses
@@ -295,6 +299,13 @@ public extension Stylish.PropertyStylers {
             public static var propertyKey: String { return "tintColor" }
             public static func apply(value: UIColor?, to target: UIKit.UIView) {
                 target.tintColor = value
+            }
+        }
+        
+        public struct OnTintColor: PropertyStyler {
+            public static var propertyKey: String { return "onTintColor" }
+            public static func apply(value: UIColor?, to target: UIKit.UISwitch) {
+                target.onTintColor = value
             }
         }
         
@@ -913,6 +924,36 @@ public extension Stylish.PropertyStylers {
             public static var propertyKey: String { return "isAnimating" }
             public static func apply(value: Bool?, to target: UIKit.UIImageView) {
                 if value == true { target.startAnimating() } else { target.stopAnimating() }
+            }
+        }
+    }
+    
+    public class UITabBar : UIView {
+        
+        public struct BarTintColor: PropertyStyler {
+            public static var propertyKey: String { return "barTintColor" }
+            public static func apply(value: UIColor?, to target: UIKit.UITabBar) {
+                target.barTintColor = value
+            }
+        }
+    }
+    
+    public class UINavigationBar {
+        
+        public struct TintColor: PropertyStyler {
+            public static var propertyKey: String { return "tintColor" }
+            public static func apply(value: UIColor?, to target: UIKit.UINavigationBar) {
+                target.tintColor = value
+            }
+        }
+    }
+    
+    public class UISwitch : UIView {
+
+        public struct onTintColor: PropertyStyler {
+            public static var propertyKey: String { return "onTintColor" }
+            public static func apply(value: UIColor?, to target: UIKit.UISwitch) {
+                target.onTintColor = value
             }
         }
     }
